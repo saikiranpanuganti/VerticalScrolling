@@ -12,6 +12,13 @@
 		7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */; };
 		7F55B35D2ABE03B000CF1FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B35C2ABE03B000CF1FE9 /* Assets.xcassets */; };
 		7F55B3602ABE03B000CF1FE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B35E2ABE03B000CF1FE9 /* LaunchScreen.storyboard */; };
+		7F55B3682ABE040E00CF1FE9 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3662ABE040E00CF1FE9 /* ImageCollectionViewCell.swift */; };
+		7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */; };
+		7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */; };
+		7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */; };
+		7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */; };
+		7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */; };
+		7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +28,13 @@
 		7F55B35A2ABE03AC00CF1FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F55B35C2ABE03B000CF1FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F55B35F2ABE03B000CF1FE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7F55B3662ABE040E00CF1FE9 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGesture.swift; sourceTree = "<group>"; };
+		7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +69,13 @@
 			children = (
 				7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */,
 				7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */,
+				7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */,
+				7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */,
+				7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */,
+				7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */,
+				7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */,
+				7F55B3662ABE040E00CF1FE9 /* ImageCollectionViewCell.swift */,
+				7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */,
 				7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */,
 				7F55B35C2ABE03B000CF1FE9 /* Assets.xcassets */,
 				7F55B35E2ABE03B000CF1FE9 /* LaunchScreen.storyboard */,
@@ -122,6 +143,8 @@
 			files = (
 				7F55B3602ABE03B000CF1FE9 /* LaunchScreen.storyboard in Resources */,
 				7F55B35D2ABE03B000CF1FE9 /* Assets.xcassets in Resources */,
+				7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */,
+				7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */,
 				7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,8 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */,
+				7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */,
+				7F55B3682ABE040E00CF1FE9 /* ImageCollectionViewCell.swift in Sources */,
 				7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */,
 				7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */,
+				7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */,
+				7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +324,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
 			};
 			name = Debug;
 		};
@@ -321,6 +350,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
 			};
 			name = Release;
 		};

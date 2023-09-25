@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="CarouselCollectionViewCell" customModule="VerticalScrolling" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1031" height="370"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1031" height="370"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Ae-j2f">
+                        <rect key="frame" x="20" y="80" width="991" height="280"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewLayout key="collectionViewLayout" id="MsS-fs-Daq" customClass="CustomHorizontalCollectionViewFlowLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-Bx-VlQ">
+                        <rect key="frame" x="20" y="10" width="991" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="9Lu-4d-snA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="jSw-Bx-VlQ" secondAttribute="trailing" constant="20" id="5Bh-H0-X3B"/>
+                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="IwT-6M-NeM"/>
+                <constraint firstAttribute="trailing" secondItem="tMQ-Ae-j2f" secondAttribute="trailing" constant="20" id="ZVS-De-Vlh"/>
+                <constraint firstItem="jSw-Bx-VlQ" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="fox-jH-Os7"/>
+                <constraint firstItem="jSw-Bx-VlQ" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="10" id="haA-8p-lwM"/>
+                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="top" secondItem="jSw-Bx-VlQ" secondAttribute="bottom" constant="10" id="ky4-ji-y2F"/>
+                <constraint firstAttribute="bottom" secondItem="tMQ-Ae-j2f" secondAttribute="bottom" constant="10" id="yrH-oJ-MTD"/>
+            </constraints>
+            <size key="customSize" width="1031" height="370"/>
+            <connections>
+                <outlet property="carouselCollectionView" destination="tMQ-Ae-j2f" id="LAp-OR-nNR"/>
+                <outlet property="titleLabel" destination="jSw-Bx-VlQ" id="Ciz-dc-GKb"/>
+            </connections>
+            <point key="canvasLocation" x="469.5" y="124"/>
+        </collectionViewCell>
+    </objects>
+</document>
