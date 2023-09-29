@@ -19,7 +19,7 @@
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Ae-j2f">
                         <rect key="frame" x="0.0" y="70" width="1031" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewLayout key="collectionViewLayout" id="MsS-fs-Daq" customClass="CustomHorizontalCollectionViewFlowLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="MsS-fs-Daq" customClass="CarouselCollectionViewFlowLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
                     </collectionView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-Bx-VlQ">
                         <rect key="frame" x="20" y="10" width="991" height="60"/>

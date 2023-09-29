@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F4409A62AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409A52AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift */; };
+		7F4409AB2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409AA2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift */; };
 		7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */; };
 		7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */; };
 		7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */; };
@@ -28,10 +30,11 @@
 		7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E812AC68CDD00DED1AF /* AppConstants.swift */; };
 		7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */; };
 		7FA40E872AC6B00700DED1AF /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */; };
-		7FDA2DAA2AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F4409A52AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		7F4409AA2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		7F55B3522ABE03AB00CF1FE9 /* VerticalScrolling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerticalScrolling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		7FA40E812AC68CDD00DED1AF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
-		7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F4409A42AC725BD00DF5FCA /* CarouselCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */,
+				7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */,
+				7F4409A52AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift */,
+			);
+			path = CarouselCell;
+			sourceTree = "<group>";
+		};
+		7F4409A72AC7285C00DF5FCA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7FA40E772AC67B9700DED1AF /* HomeViewController.swift */,
+				7FA40E782AC67B9700DED1AF /* HomeViewController.xib */,
+				7F4409AA2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		7F55B3492ABE03AB00CF1FE9 = {
 			isa = PBXGroup;
 			children = (
@@ -89,16 +111,13 @@
 			children = (
 				7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */,
 				7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */,
-				7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */,
-				7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */,
+				7F4409A42AC725BD00DF5FCA /* CarouselCell */,
 				7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */,
-				7FA40E772AC67B9700DED1AF /* HomeViewController.swift */,
-				7FA40E782AC67B9700DED1AF /* HomeViewController.xib */,
+				7F4409A72AC7285C00DF5FCA /* Home */,
 				7FA40E752AC6791E00DED1AF /* ContainerViewController.swift */,
 				7FA40E892AC6B01D00DED1AF /* Menu */,
 				7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */,
 				7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */,
-				7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */,
 				7F55B3662ABE040E00CF1FE9 /* ImageCollectionViewCell.swift */,
 				7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */,
 				7FA40E812AC68CDD00DED1AF /* AppConstants.swift */,
@@ -213,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4409A62AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift in Sources */,
 				7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */,
 				7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */,
 				7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */,
@@ -226,7 +246,7 @@
 				7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */,
 				7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */,
 				7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */,
-				7FDA2DAA2AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift in Sources */,
+				7F4409AB2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

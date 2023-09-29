@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        if let collectionViewLayout = collectionView.collectionViewLayout as? CustomVerticalCollectionViewFlowLayout {
+        if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
             print("self.view.frame.width - \(self.view.frame.width)")
             collectionViewLayout.cellSize = CGSize(width: self.view.frame.width-250, height: 400)
         }
@@ -37,10 +37,10 @@ class HomeViewController: UIViewController {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
 //            AppData.shared.preferredPositionShouldY = cellLocation.y
-            if let collectionViewLayout = collectionView.collectionViewLayout as? CustomVerticalCollectionViewFlowLayout {
+            if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionShouldY = cellLocation.y
             }
-            print("$$VerticalScrolling Controller: shouldUpdateFocusIn y - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
+            print("$$HomeCollectionViewFlowLayout Controller: shouldUpdateFocusIn y - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
         }
         return true
     }
@@ -50,8 +50,8 @@ class HomeViewController: UIViewController {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
 //            AppData.shared.preferredPositionDidY = cellLocation.y
-            print("$$VerticalScrolling Controller: didUpdateFocusIn - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
-            if let collectionViewLayout = collectionView.collectionViewLayout as? CustomVerticalCollectionViewFlowLayout {
+            print("$$HomeCollectionViewFlowLayout Controller: didUpdateFocusIn - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
+            if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionDidY = cellLocation.y
                 collectionViewLayout.focusUpdated = true
             }
