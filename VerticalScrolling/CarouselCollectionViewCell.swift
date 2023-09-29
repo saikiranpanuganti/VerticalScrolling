@@ -47,9 +47,10 @@ class CarouselCollectionViewCell: UICollectionViewCell {
             if let collectionViewLayout = carouselCollectionView.collectionViewLayout as? CustomHorizontalCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionShouldX = cellLocation.x
             }
-            if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview {
+            if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview && ((context.previouslyFocusedView as? MenuTableViewCell) == nil) {
                 let visibleIndexPaths = collectionView.indexPathsForVisibleItems
                 if context.nextFocusedIndexPath != visibleIndexPaths.first {
+                    print("Horizontal returning false")
                     return false
                 }
                 print("Horizontal different instances - \(collectionView.indexPathsForVisibleItems)")

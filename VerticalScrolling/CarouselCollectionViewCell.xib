@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="1031" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Ae-j2f">
-                        <rect key="frame" x="20" y="80" width="991" height="280"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Ae-j2f">
+                        <rect key="frame" x="0.0" y="70" width="1031" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewLayout key="collectionViewLayout" id="MsS-fs-Daq" customClass="CustomHorizontalCollectionViewFlowLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
                     </collectionView>
@@ -35,12 +35,12 @@
             <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jSw-Bx-VlQ" secondAttribute="trailing" constant="20" id="5Bh-H0-X3B"/>
-                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="IwT-6M-NeM"/>
-                <constraint firstAttribute="trailing" secondItem="tMQ-Ae-j2f" secondAttribute="trailing" constant="20" id="ZVS-De-Vlh"/>
+                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="IwT-6M-NeM"/>
+                <constraint firstAttribute="trailing" secondItem="tMQ-Ae-j2f" secondAttribute="trailing" id="ZVS-De-Vlh"/>
                 <constraint firstItem="jSw-Bx-VlQ" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="fox-jH-Os7"/>
                 <constraint firstItem="jSw-Bx-VlQ" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="10" id="haA-8p-lwM"/>
-                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="top" secondItem="jSw-Bx-VlQ" secondAttribute="bottom" constant="10" id="ky4-ji-y2F"/>
-                <constraint firstAttribute="bottom" secondItem="tMQ-Ae-j2f" secondAttribute="bottom" constant="10" id="yrH-oJ-MTD"/>
+                <constraint firstItem="tMQ-Ae-j2f" firstAttribute="top" secondItem="jSw-Bx-VlQ" secondAttribute="bottom" id="ky4-ji-y2F"/>
+                <constraint firstAttribute="bottom" secondItem="tMQ-Ae-j2f" secondAttribute="bottom" id="yrH-oJ-MTD"/>
             </constraints>
             <size key="customSize" width="1031" height="370"/>
             <connections>

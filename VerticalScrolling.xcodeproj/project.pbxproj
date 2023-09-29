@@ -19,6 +19,16 @@
 		7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */; };
 		7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */; };
 		7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */; };
+		7FA40E762AC6791E00DED1AF /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E752AC6791E00DED1AF /* ContainerViewController.swift */; };
+		7FA40E792AC67B9700DED1AF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E772AC67B9700DED1AF /* HomeViewController.swift */; };
+		7FA40E7A2AC67B9700DED1AF /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA40E782AC67B9700DED1AF /* HomeViewController.xib */; };
+		7FA40E7D2AC67BD700DED1AF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E7B2AC67BD700DED1AF /* MenuViewController.swift */; };
+		7FA40E7E2AC67BD700DED1AF /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA40E7C2AC67BD700DED1AF /* MenuViewController.xib */; };
+		7FA40E802AC67C0200DED1AF /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E7F2AC67C0200DED1AF /* Utility.swift */; };
+		7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E812AC68CDD00DED1AF /* AppConstants.swift */; };
+		7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */; };
+		7FA40E872AC6B00700DED1AF /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */; };
+		7FDA2DAA2AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +45,16 @@
 		7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGesture.swift; sourceTree = "<group>"; };
 		7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		7FA40E752AC6791E00DED1AF /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		7FA40E772AC67B9700DED1AF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7FA40E782AC67B9700DED1AF /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		7FA40E7B2AC67BD700DED1AF /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7FA40E7C2AC67BD700DED1AF /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		7FA40E7F2AC67C0200DED1AF /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		7FA40E812AC68CDD00DED1AF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,15 +92,49 @@
 				7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */,
 				7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */,
 				7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */,
+				7FA40E772AC67B9700DED1AF /* HomeViewController.swift */,
+				7FA40E782AC67B9700DED1AF /* HomeViewController.xib */,
+				7FA40E752AC6791E00DED1AF /* ContainerViewController.swift */,
+				7FA40E892AC6B01D00DED1AF /* Menu */,
 				7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */,
 				7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */,
+				7FDA2DA92AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift */,
 				7F55B3662ABE040E00CF1FE9 /* ImageCollectionViewCell.swift */,
 				7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */,
+				7FA40E812AC68CDD00DED1AF /* AppConstants.swift */,
+				7FA40E7F2AC67C0200DED1AF /* Utility.swift */,
 				7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */,
 				7F55B35C2ABE03B000CF1FE9 /* Assets.xcassets */,
 				7F55B35E2ABE03B000CF1FE9 /* LaunchScreen.storyboard */,
 			);
 			path = VerticalScrolling;
+			sourceTree = "<group>";
+		};
+		7FA40E832AC6AFE100DED1AF /* MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */,
+				7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */,
+			);
+			path = MenuCell;
+			sourceTree = "<group>";
+		};
+		7FA40E882AC6B00C00DED1AF /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FA40E7B2AC67BD700DED1AF /* MenuViewController.swift */,
+				7FA40E7C2AC67BD700DED1AF /* MenuViewController.xib */,
+			);
+			path = MenuViewController;
+			sourceTree = "<group>";
+		};
+		7FA40E892AC6B01D00DED1AF /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7FA40E882AC6B00C00DED1AF /* MenuViewController */,
+				7FA40E832AC6AFE100DED1AF /* MenuCell */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +200,9 @@
 				7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */,
 				7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */,
 				7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */,
+				7FA40E7E2AC67BD700DED1AF /* MenuViewController.xib in Resources */,
+				7FA40E872AC6B00700DED1AF /* MenuTableViewCell.xib in Resources */,
+				7FA40E7A2AC67B9700DED1AF /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,11 +215,18 @@
 			files = (
 				7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */,
 				7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */,
+				7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */,
+				7FA40E762AC6791E00DED1AF /* ContainerViewController.swift in Sources */,
 				7F55B3682ABE040E00CF1FE9 /* ImageCollectionViewCell.swift in Sources */,
+				7FA40E7D2AC67BD700DED1AF /* MenuViewController.swift in Sources */,
 				7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */,
+				7FA40E792AC67B9700DED1AF /* HomeViewController.swift in Sources */,
 				7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */,
+				7FA40E802AC67C0200DED1AF /* Utility.swift in Sources */,
 				7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */,
+				7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */,
 				7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */,
+				7FDA2DAA2AC13DAF00E57D31 /* HomeCollectionViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,8 +371,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 320;
 				DEVELOPMENT_TEAM = L2Z5JFXQ85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -318,9 +383,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saikiran.VerticalScrolling;
+				MARKETING_VERSION = 5.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.verticalscrolling.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -333,8 +399,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 320;
 				DEVELOPMENT_TEAM = L2Z5JFXQ85;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -344,9 +411,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saikiran.VerticalScrolling;
+				MARKETING_VERSION = 5.1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.verticalscrolling.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;

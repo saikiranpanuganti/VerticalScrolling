@@ -20,10 +20,10 @@ class CustomHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         self.itemSize = cellSize
         self.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        self.sectionInsetReference = .fromSafeArea
+        self.sectionInsetReference = .fromContentInset
         self.scrollDirection = .horizontal
         self.minimumLineSpacing = 20
-        self.minimumInteritemSpacing = 20
+        self.minimumInteritemSpacing = 0
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -69,15 +69,16 @@ class CustomVerticalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var preferredPositionShouldY: CGFloat?
     private var isFastScrolling: Bool = false
     var focusUpdated: Bool = false
+    var cellSize: CGSize = CGSize(width: 1650, height: 400)
     
     override func prepare() {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
         
-        self.itemSize = CGSize(width: collectionView.frame.width, height: 400)
+        self.itemSize = cellSize
         self.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        self.sectionInsetReference = .fromSafeArea
+        self.sectionInsetReference = .fromContentInset
         self.scrollDirection = .vertical
     }
     
