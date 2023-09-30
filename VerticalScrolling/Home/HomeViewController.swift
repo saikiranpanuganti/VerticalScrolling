@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var heights: [CGFloat] = [400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 300, 300, 300, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600, 400, 500, 300, 400, 500, 400, 400, 500, 600]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +23,8 @@ class HomeViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
-            print("self.view.frame.width - \(self.view.frame.width)")
-            collectionViewLayout.cellSize = CGSize(width: self.view.frame.width-250, height: 400)
+        if let layout = collectionView?.collectionViewLayout as? HomeCollectionViewFlowLayout {
+          layout.delegate = self
         }
         collectionView.reloadData()
     }
@@ -36,7 +37,6 @@ class HomeViewController: UIViewController {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
-//            AppData.shared.preferredPositionShouldY = cellLocation.y
             if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionShouldY = cellLocation.y
             }
@@ -49,7 +49,6 @@ class HomeViewController: UIViewController {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
-//            AppData.shared.preferredPositionDidY = cellLocation.y
             print("$$HomeCollectionViewFlowLayout Controller: didUpdateFocusIn - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
             if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionDidY = cellLocation.y
@@ -78,23 +77,11 @@ extension HomeViewController: UICollectionViewDelegate {
     
 }
 
-//extension ViewControllerGesture: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.item % 7 == 0 {
-//            return CGSize(width: 300, height: 300)
-//        }
-//        return CGSize(width: 200, height: 300)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 50
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 50
-//    }
-//}
-
+extension HomeViewController: HomeCollectionViewFlowLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, heightForItemAtIndexPath indexPath:IndexPath) -> CGFloat {
+        return heights[indexPath.item]
+    }
+}
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F4409A62AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409A52AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift */; };
 		7F4409AB2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409AA2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift */; };
+		7F4409AF2AC7D77600DF5FCA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409AE2AC7D77600DF5FCA /* TestViewController.swift */; };
 		7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */; };
 		7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */; };
 		7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		7F4409A52AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		7F4409AA2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		7F4409AE2AC7D77600DF5FCA /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7F55B3522ABE03AB00CF1FE9 /* VerticalScrolling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerticalScrolling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */,
 				7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */,
+				7F4409AE2AC7D77600DF5FCA /* TestViewController.swift */,
 				7F4409A42AC725BD00DF5FCA /* CarouselCell */,
 				7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */,
 				7F4409A72AC7285C00DF5FCA /* Home */,
@@ -234,6 +237,7 @@
 			files = (
 				7F4409A62AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift in Sources */,
 				7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */,
+				7F4409AF2AC7D77600DF5FCA /* TestViewController.swift in Sources */,
 				7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */,
 				7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */,
 				7FA40E762AC6791E00DED1AF /* ContainerViewController.swift in Sources */,
