@@ -66,7 +66,7 @@ extension ViewControllerGesture: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as? CarouselCollectionViewCell {
-            cell.configureUI(index: indexPath.item)
+            cell.configureUI(index: indexPath.item, homeData: HomeDataModel(carouselHeight: 300, isHidden: false))
             
             return cell
         }

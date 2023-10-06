@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="21507" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="PromoCollectionViewCell" customModule="VerticalScrolling" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1038" height="376"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1038" height="376"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYQ-uI-2TI">
+                        <rect key="frame" x="20" y="10" width="998" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="87E-n0-FA2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HCe-fO-BCn">
+                        <rect key="frame" x="0.0" y="70" width="1038" height="306"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewLayout key="collectionViewLayout" id="AmU-T8-Eqa" customClass="MpxCollectionViewLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
+                    </collectionView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <constraints>
+                <constraint firstItem="gYQ-uI-2TI" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="0Qf-3f-708"/>
+                <constraint firstAttribute="trailing" secondItem="gYQ-uI-2TI" secondAttribute="trailing" constant="20" id="CvR-56-787"/>
+                <constraint firstItem="gYQ-uI-2TI" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="10" id="I3v-SA-1h3"/>
+                <constraint firstItem="HCe-fO-BCn" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="Wer-23-7lM"/>
+                <constraint firstItem="HCe-fO-BCn" firstAttribute="top" secondItem="gYQ-uI-2TI" secondAttribute="bottom" id="cjc-IO-9OI"/>
+                <constraint firstAttribute="trailing" secondItem="HCe-fO-BCn" secondAttribute="trailing" id="gjB-te-gLs"/>
+                <constraint firstAttribute="bottom" secondItem="HCe-fO-BCn" secondAttribute="bottom" id="xJR-L9-Dq8"/>
+            </constraints>
+            <size key="customSize" width="1038" height="376"/>
+            <connections>
+                <outlet property="promoCollectionView" destination="HCe-fO-BCn" id="4WH-PG-VqL"/>
+                <outlet property="titleLabel" destination="gYQ-uI-2TI" id="4Bf-Yp-GQ7"/>
+            </connections>
+            <point key="canvasLocation" x="453" y="117"/>
+        </collectionViewCell>
+    </objects>
+</document>
