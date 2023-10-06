@@ -13,6 +13,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     var preferredPositionDidX: CGFloat? = nil
     
     var cellWidth: CGFloat = 300.0
+    let dragOffset: CGFloat = 200.0
     
     private let numberOfColumns = 1
     private let cellPadding: CGFloat = 6
@@ -32,7 +33,10 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
         
-        guard cache.isEmpty, let collectionView = collectionView else { return }
+        guard let collectionView = collectionView else { return }
+        
+        let standardWidth = UltravisualLayoutConstants.Cell.standardWidth
+        let featuredWidth = UltravisualLayoutConstants.Cell.featuredWidth
         
         let columnHeight = contentHeight
         var yOffset: [CGFloat] = []
@@ -78,21 +82,13 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         if let expectedX = preferredPositionDidX ?? preferredPositionShouldX {
-//            AppData.shared.preferredPositionDidX = nil
-//            AppData.shared.preferredPositionShouldX = nil
-            print("Final expectedX Mpx Horizontal - \(expectedX)")
             return CGPoint(x: expectedX, y: proposedContentOffset.y)
         }else {
             let proposedRect = self.collectionView!.bounds
-            print("proposedContentOffset Mpx Horizontal - \(proposedContentOffset)")
-            print("velocity Mpx Horizontal - \(velocity)")
-            print("layoutAtributes Mpx Horizontal - \(self.layoutAttributesForElements(in: proposedRect))")
             if let layoutAttributesForElements = self.layoutAttributesForElements(in: proposedRect), layoutAttributesForElements.count > 0, let nearestOffsetX = getNearestX(layoutAttributes: layoutAttributesForElements, velocity: velocity, proposedOffSet: proposedContentOffset) {
-                print("Final nearestOffsetX Mpx Horizontal - \(nearestOffsetX)")
                 return CGPoint(x: nearestOffsetX, y: proposedContentOffset.y)
             }
         }
-        print("Final proposedContentOffsetX Mpx Horizontal - \(proposedContentOffset.x)")
         return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y)
     }
     

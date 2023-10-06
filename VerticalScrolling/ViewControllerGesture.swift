@@ -40,7 +40,6 @@ class ViewControllerGesture: UIViewController {
             if let collectionViewLayout = collectionView.collectionViewLayout as? CustomVerticalCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionShouldY = cellLocation.y
             }
-            print("$$VerticalScrolling Controller: shouldUpdateFocusIn y - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
         }
         return true
     }
@@ -49,8 +48,6 @@ class ViewControllerGesture: UIViewController {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
-//            AppData.shared.preferredPositionDidY = cellLocation.y
-            print("$$VerticalScrolling Controller: didUpdateFocusIn - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
             if let collectionViewLayout = collectionView.collectionViewLayout as? CustomVerticalCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionDidY = cellLocation.y
                 collectionViewLayout.focusUpdated = true

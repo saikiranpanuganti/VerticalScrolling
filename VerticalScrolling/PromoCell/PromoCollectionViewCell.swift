@@ -68,14 +68,12 @@ class PromoCollectionViewCell: UICollectionViewCell {
             }
             if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview && ((context.previouslyFocusedView as? MenuTableViewCell) == nil) {
                 let fullyVisibleIndexPaths = getFullyVisibleCells(collectionView: collectionView)
-                print("Horizontal returning false visibleIndexPaths - \(fullyVisibleIndexPaths) nextIndexPath - \(context.nextFocusedIndexPath)")
                 if fullyVisibleIndexPaths.count > 0,
                    context.nextFocusedIndexPath != fullyVisibleIndexPaths.first {
                     moveFocus(toIndexPath: fullyVisibleIndexPaths.first ?? IndexPath(item: 0, section: 0))
                     return false
                 }
             }
-            print("$$Horizontal Carousel: shouldUpdateFocusIn x - \(cellLocation.x - 50) ms - \(Date().timeIntervalSince1970*1000)")
         }
         return true
     }
@@ -87,14 +85,6 @@ class PromoCollectionViewCell: UICollectionViewCell {
             if let collectionViewLayoutMpx = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
                 collectionViewLayoutMpx.preferredPositionShouldX = cellLocation.x - 50
             }
-            
-            if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview {
-                print("Horizontal different instances - \(collectionView.indexPathsForVisibleItems)")
-            }else {
-                print("Horizontal same instances")
-            }
-            //            AppData.shared.preferredPositionDidX = cellLocation.x
-            print("$$Horizontal Carousel: didUpdateFocusIn x - \(cellLocation.x - 50) ms - \(Date().timeIntervalSince1970*1000)")
         }
     }
 }

@@ -27,23 +27,14 @@ class CustomHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        print("targetContentOffset X Horizontal cellSize - \(cellSize)")
         if let expectedX = preferredPositionDidX ?? preferredPositionShouldX {
-//            AppData.shared.preferredPositionDidX = nil
-//            AppData.shared.preferredPositionShouldX = nil
-            print("Final expectedX Horizontal - \(expectedX)")
             return CGPoint(x: expectedX, y: proposedContentOffset.y)
         }else {
             let proposedRect = self.collectionView!.bounds
-            print("proposedContentOffset Horizontal - \(proposedContentOffset)")
-            print("velocity Horizontal - \(velocity)")
-            print("layoutAtributes Horizontal - \(self.layoutAttributesForElements(in: proposedRect))")
             if let layoutAttributesForElements = self.layoutAttributesForElements(in: proposedRect), layoutAttributesForElements.count > 0, let nearestOffsetX = getNearestX(layoutAttributes: layoutAttributesForElements, velocity: velocity, proposedOffSet: proposedContentOffset) {
-                print("Final nearestOffsetX Horizontal - \(nearestOffsetX)")
                 return CGPoint(x: nearestOffsetX, y: proposedContentOffset.y)
             }
         }
-        print("Final proposedContentOffsetX Horizontal - \(proposedContentOffset.x)")
         return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y)
     }
     
@@ -83,7 +74,6 @@ class CustomVerticalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        print("targetContentOffset Y Vertical velocity - \(velocity.y)")
         if velocity.y > 8 || velocity.y < -8 {
             isFastScrolling = true
             focusUpdated = false
@@ -94,21 +84,13 @@ class CustomVerticalCollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
         
         if let expectedY = preferredPositionDidY ?? preferredPositionShouldY {
-//            AppData.shared.preferredPositionDidY = nil
-//            AppData.shared.preferredPositionShouldY = nil
-            print("Final expectedY Vertical - \(expectedY)")
             return CGPoint(x: proposedContentOffset.x, y: expectedY)
         }else {
             let proposedRect = self.collectionView!.bounds
-            print("proposedContentOffset Vertical - \(proposedContentOffset)")
-            print("velocity Vertical - \(velocity)")
-            print("layoutAtributes Vertical - \(self.layoutAttributesForElements(in: proposedRect))")
             if let layoutAttributesForElements = self.layoutAttributesForElements(in: proposedRect), layoutAttributesForElements.count > 0, let nearestY = getNearestY(layoutAttributes: layoutAttributesForElements, velocity: velocity, proposedOffSet: proposedContentOffset) {
-                print("Final nearestOffsetY Vertical - \(nearestY)")
                 return CGPoint(x: proposedContentOffset.y, y: nearestY)
             }
         }
-        print("Final proposedContentOffsetY Vertical - \(proposedContentOffset.y)")
         return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y)
     }
     

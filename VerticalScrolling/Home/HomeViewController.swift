@@ -144,7 +144,6 @@ class HomeViewController: UIViewController {
             if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionShouldY = cellLocation.y
             }
-            print("$$HomeCollectionViewFlowLayout Controller: shouldUpdateFocusIn y - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000)")
         }
         return true
     }
@@ -153,7 +152,6 @@ class HomeViewController: UIViewController {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
-            print("$$HomeCollectionViewFlowLayout Controller: didUpdateFocusIn - \(cellLocation.y) ms - \(Date().timeIntervalSince1970*1000) carouselType - \(homeData[indexPath.item].carouselType.rawValue)")
             if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
                 collectionViewLayout.preferredPositionDidY = cellLocation.y
                 collectionViewLayout.focusUpdated = true

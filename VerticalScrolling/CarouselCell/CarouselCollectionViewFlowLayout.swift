@@ -26,23 +26,14 @@ class CarouselCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        print("targetContentOffset X Horizontal cellSize - \(cellSize)")
         if let expectedX = preferredPositionDidX ?? preferredPositionShouldX {
-//            AppData.shared.preferredPositionDidX = nil
-//            AppData.shared.preferredPositionShouldX = nil
-            print("Final expectedX Horizontal - \(expectedX)")
             return CGPoint(x: expectedX, y: proposedContentOffset.y)
         }else {
             let proposedRect = self.collectionView!.bounds
-            print("proposedContentOffset Horizontal - \(proposedContentOffset)")
-            print("velocity Horizontal - \(velocity)")
-            print("layoutAtributes Horizontal - \(self.layoutAttributesForElements(in: proposedRect))")
             if let layoutAttributesForElements = self.layoutAttributesForElements(in: proposedRect), layoutAttributesForElements.count > 0, let nearestOffsetX = getNearestX(layoutAttributes: layoutAttributesForElements, velocity: velocity, proposedOffSet: proposedContentOffset) {
-                print("Final nearestOffsetX Horizontal - \(nearestOffsetX)")
                 return CGPoint(x: nearestOffsetX, y: proposedContentOffset.y)
             }
         }
-        print("Final proposedContentOffsetX Horizontal - \(proposedContentOffset.x)")
         return CGPoint(x: proposedContentOffset.x, y: proposedContentOffset.y)
     }
     
