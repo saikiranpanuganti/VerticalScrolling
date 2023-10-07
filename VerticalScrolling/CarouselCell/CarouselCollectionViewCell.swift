@@ -73,7 +73,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
                 if fullyVisibleIndexPaths.count > 0,
                    context.nextFocusedIndexPath != fullyVisibleIndexPaths.first {
                     moveFocus(toIndexPath: fullyVisibleIndexPaths.first ?? IndexPath(item: 0, section: 0))
-                    return false
+//                    return false
                 }
             }
         }

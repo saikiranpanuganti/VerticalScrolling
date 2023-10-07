@@ -19,6 +19,8 @@
 		7F4409C42ACFBF6B00DF5FCA /* MpxCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409C32ACFBF6B00DF5FCA /* MpxCollectionViewLayout.swift */; };
 		7F4409C82AD05AF400DF5FCA /* PromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409C62AD05AF400DF5FCA /* PromoCollectionViewCell.swift */; };
 		7F4409C92AD05AF400DF5FCA /* PromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F4409C72AD05AF400DF5FCA /* PromoCollectionViewCell.xib */; };
+		7F4409CD2AD0943800DF5FCA /* PromoImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4409CB2AD0943800DF5FCA /* PromoImageCollectionViewCell.swift */; };
+		7F4409CE2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F4409CC2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib */; };
 		7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */; };
 		7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */; };
 		7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3592ABE03AC00CF1FE9 /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 		7F4409C32ACFBF6B00DF5FCA /* MpxCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MpxCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7F4409C62AD05AF400DF5FCA /* PromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7F4409C72AD05AF400DF5FCA /* PromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoCollectionViewCell.xib; sourceTree = "<group>"; };
+		7F4409CB2AD0943800DF5FCA /* PromoImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F4409CC2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromoImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		7F55B3522ABE03AB00CF1FE9 /* VerticalScrolling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VerticalScrolling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F55B3552ABE03AB00CF1FE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F55B3572ABE03AC00CF1FE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 			path = PromoCell;
 			sourceTree = "<group>";
 		};
+		7F4409CA2AD0942600DF5FCA /* PromoImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F4409CB2AD0943800DF5FCA /* PromoImageCollectionViewCell.swift */,
+				7F4409CC2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib */,
+			);
+			path = PromoImageCell;
+			sourceTree = "<group>";
+		};
 		7F55B3492ABE03AB00CF1FE9 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +167,7 @@
 				7F4409B62AC9AE5100DF5FCA /* SplashViewController.swift */,
 				7F4409BB2AC9BF0F00DF5FCA /* HomeLayout.swift */,
 				7F4409BF2ACA962500DF5FCA /* NetworkAdaptor.swift */,
+				7F4409CA2AD0942600DF5FCA /* PromoImageCell */,
 				7F4409C52AD05ACE00DF5FCA /* PromoCell */,
 				7F4409A42AC725BD00DF5FCA /* CarouselCell */,
 				7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */,
@@ -266,6 +280,7 @@
 				7F4409BA2AC9BED400DF5FCA /* homelayout.json in Resources */,
 				7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */,
 				7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */,
+				7F4409CE2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib in Resources */,
 				7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */,
 				7FA40E7E2AC67BD700DED1AF /* MenuViewController.xib in Resources */,
 				7FA40E872AC6B00700DED1AF /* MenuTableViewCell.xib in Resources */,
@@ -300,6 +315,7 @@
 				7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */,
 				7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */,
 				7F4409BC2AC9BF0F00DF5FCA /* HomeLayout.swift in Sources */,
+				7F4409CD2AD0943800DF5FCA /* PromoImageCollectionViewCell.swift in Sources */,
 				7F4409AB2AC728BE00DF5FCA /* HomeCollectionViewFlowLayout.swift in Sources */,
 				7F4409C42ACFBF6B00DF5FCA /* MpxCollectionViewLayout.swift in Sources */,
 				7F4409BE2AC9BFD400DF5FCA /* Bundle+Extension.swift in Sources */,

@@ -7,18 +7,37 @@
 
 import UIKit
 
+struct PromoCellProps {
+    static var leftInset: CGFloat = 50
+    static var cellPadding: CGFloat = 10
+    static var featuredCellWidth: CGFloat = 990
+}
+
 
 class MpxCollectionViewLayout: UICollectionViewLayout {
     var preferredPositionShouldX: CGFloat? = nil
     var preferredPositionDidX: CGFloat? = nil
     
     var cellWidth: CGFloat = 300.0
-    let dragOffset: CGFloat = 200.0
+    var featuredCellWidth: CGFloat = PromoCellProps.featuredCellWidth
+    var xOffsetPrevious: CGFloat = -(PromoCellProps.leftInset)
+    var multiplier: CGFloat = 0
+    
+    func getCurrentIndexNext(xOffset: CGFloat) -> Int {
+        print("$$Promo: getCurrentIndex x - \((xOffset + PromoCellProps.leftInset)) cellWidth - \(cellWidth + PromoCellProps.cellPadding)")
+        return Int((xOffset + PromoCellProps.leftInset)) / Int(cellWidth + PromoCellProps.cellPadding)
+    }
+    
+    func getCurrentIndexPrevious(xOffset: CGFloat) -> Int {
+        print("$$Promo: getCurrentIndex x - \((xOffset + PromoCellProps.leftInset)) cellWidth - \(cellWidth + PromoCellProps.cellPadding)")
+        return Int(ceil((xOffset + PromoCellProps.leftInset) / (cellWidth + PromoCellProps.cellPadding)))
+    }
     
     private let numberOfColumns = 1
-    private let cellPadding: CGFloat = 6
     
     private var cache: [UICollectionViewLayoutAttributes] = []
+    private var cacheBackUp: [UICollectionViewLayoutAttributes] = []
+    
     private var contentWidth: CGFloat = 0
     private var contentHeight: CGFloat {
         guard let collectionView = collectionView else { return 0 }
@@ -32,37 +51,91 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     
     override func prepare() {
         super.prepare()
-        
         guard let collectionView = collectionView else { return }
+        cache.removeAll()
         
-        let standardWidth = UltravisualLayoutConstants.Cell.standardWidth
-        let featuredWidth = UltravisualLayoutConstants.Cell.featuredWidth
-        
+        multiplier = (PromoCellProps.featuredCellWidth - cellWidth)/(cellWidth + PromoCellProps.cellPadding)
+        let xOffSet_Coll = collectionView.contentOffset.x
         let columnHeight = contentHeight
-        var yOffset: [CGFloat] = []
-        for column in 0..<numberOfColumns {
-            yOffset.append(CGFloat(column) * columnHeight)
-        }
-        var column = 0
-        var xOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
+        var xOffset: CGFloat = 0
         
-        for item in 0..<collectionView.numberOfItems(inSection: 0) {
-            let indexPath = IndexPath(item: item, section: 0)
-            
-            let photoWidth: CGFloat = cellWidth
-            let width = (cellPadding * 2) + photoWidth
-            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: width, height: columnHeight)
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            attributes.frame = insetFrame
-            cache.append(attributes)
-            
-            contentWidth = max(contentWidth, frame.maxX)
-            xOffset[column] = xOffset[column] + width
-            
-            column = column < (numberOfColumns - 1) ? (column + 1) : 0
+        if xOffSet_Coll - xOffsetPrevious >= 0 {
+            let currentIndex = getCurrentIndexNext(xOffset: xOffSet_Coll)
+            let diff = xOffSet_Coll - (CGFloat(currentIndex)*(cellWidth + PromoCellProps.cellPadding)) + PromoCellProps.leftInset
+            xOffsetPrevious = xOffSet_Coll
+            if diff == 0 {
+                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                    let indexPath = IndexPath(item: item, section: 0)
+                    
+                    let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    attributes.frame = frame
+                    cache.append(attributes)
+                    contentWidth = max(contentWidth, frame.maxX)
+                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                }
+            }else if diff > 0 {
+                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                    let indexPath = IndexPath(item: item, section: 0)
+                    
+                    var width = cellWidth
+                    if item == currentIndex {
+                        width = featuredCellWidth - diff*multiplier
+                    }else if item == currentIndex + 1 {
+                        width = cellWidth + diff*multiplier
+                    }
+                    
+                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    attributes.frame = frame
+                    cache.append(attributes)
+                    
+                    contentWidth = max(contentWidth, frame.maxX)
+                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                }
+            }
+        }else {
+            let currentIndex = getCurrentIndexPrevious(xOffset: xOffSet_Coll)
+            let diff = xOffSet_Coll - (CGFloat(currentIndex)*(cellWidth + PromoCellProps.cellPadding)) + PromoCellProps.leftInset
+            xOffsetPrevious = xOffSet_Coll
+            if diff == 0 {
+                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                    let indexPath = IndexPath(item: item, section: 0)
+                    let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    attributes.frame = frame
+                    cache.append(attributes)
+                    contentWidth = max(contentWidth, frame.maxX)
+                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                }
+            }else if diff < 0 {
+                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                    let indexPath = IndexPath(item: item, section: 0)
+                    
+                    var width = cellWidth
+                    if item == currentIndex {
+//                        print("$$Promo: leftScroll indexPath - \(indexPath) featuredCellWidth - \(featuredCellWidth) diff - \(diff) width - \(featuredCellWidth + diff*2)")
+                        width = featuredCellWidth + (diff*multiplier)
+                    }else if item == currentIndex - 1 {
+//                        print("$$Promo: leftScroll indexPath - \(indexPath) cellWidth - \(cellWidth) diff - \(diff) width - \(cellWidth - diff*2)")
+                        width = cellWidth - (diff*multiplier)
+                    }else {
+                        width = cellWidth
+                    }
+                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    attributes.frame = frame
+                    cache.append(attributes)
+                    
+                    contentWidth = max(contentWidth, frame.maxX)
+                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                }
+            }
         }
+        
+        cacheBackUp = cache
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -102,5 +175,9 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             }
         }
         return result.nearest
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
     }
 }
