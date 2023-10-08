@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,24 +31,67 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewLayout key="collectionViewLayout" id="AmU-T8-Eqa" customClass="MpxCollectionViewLayout" customModule="VerticalScrolling" customModuleProvider="target"/>
                     </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kc1-mf-STB">
+                        <rect key="frame" x="350" y="70" width="600" height="306"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGP-SW-dxn">
+                                <rect key="frame" x="10" y="153" width="580" height="0.0"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="CGP-SW-dxn" firstAttribute="leading" secondItem="kc1-mf-STB" secondAttribute="leading" constant="10" id="CRD-9U-rjR"/>
+                            <constraint firstAttribute="width" constant="600" id="KVW-S8-tLJ"/>
+                            <constraint firstItem="CGP-SW-dxn" firstAttribute="centerY" secondItem="kc1-mf-STB" secondAttribute="centerY" id="eeu-rF-qsR"/>
+                            <constraint firstAttribute="trailing" secondItem="CGP-SW-dxn" secondAttribute="trailing" constant="10" id="wdo-cM-SFe"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vM0-eO-qgg">
+                        <rect key="frame" x="50" y="70" width="240" height="306"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="240" id="J2Q-Qc-XHo"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
             <constraints>
                 <constraint firstItem="gYQ-uI-2TI" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="0Qf-3f-708"/>
+                <constraint firstItem="vM0-eO-qgg" firstAttribute="top" secondItem="gYQ-uI-2TI" secondAttribute="bottom" id="5f9-Hj-qOl"/>
                 <constraint firstAttribute="trailing" secondItem="gYQ-uI-2TI" secondAttribute="trailing" constant="20" id="CvR-56-787"/>
                 <constraint firstItem="gYQ-uI-2TI" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="10" id="I3v-SA-1h3"/>
+                <constraint firstItem="kc1-mf-STB" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="350" id="MN0-Ee-TxG"/>
                 <constraint firstItem="HCe-fO-BCn" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="Wer-23-7lM"/>
+                <constraint firstItem="kc1-mf-STB" firstAttribute="top" secondItem="gYQ-uI-2TI" secondAttribute="bottom" id="Xk5-gU-yrc"/>
                 <constraint firstItem="HCe-fO-BCn" firstAttribute="top" secondItem="gYQ-uI-2TI" secondAttribute="bottom" id="cjc-IO-9OI"/>
                 <constraint firstAttribute="trailing" secondItem="HCe-fO-BCn" secondAttribute="trailing" id="gjB-te-gLs"/>
+                <constraint firstAttribute="bottom" secondItem="kc1-mf-STB" secondAttribute="bottom" id="k5x-ol-CqD"/>
+                <constraint firstItem="vM0-eO-qgg" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="50" id="rvU-Qr-Jqp"/>
+                <constraint firstAttribute="bottom" secondItem="vM0-eO-qgg" secondAttribute="bottom" id="sAc-8p-Ikz"/>
                 <constraint firstAttribute="bottom" secondItem="HCe-fO-BCn" secondAttribute="bottom" id="xJR-L9-Dq8"/>
             </constraints>
             <size key="customSize" width="1038" height="376"/>
             <connections>
+                <outlet property="borderLeading" destination="rvU-Qr-Jqp" id="F98-Z6-oke"/>
+                <outlet property="borderView" destination="vM0-eO-qgg" id="0np-77-A0K"/>
+                <outlet property="borderWidth" destination="J2Q-Qc-XHo" id="PgP-zv-H3M"/>
+                <outlet property="metaDataLabel" destination="CGP-SW-dxn" id="JH7-iE-ddP"/>
                 <outlet property="promoCollectionView" destination="HCe-fO-BCn" id="4WH-PG-VqL"/>
+                <outlet property="promoMetaDataLeading" destination="MN0-Ee-TxG" id="YAx-vG-EMx"/>
+                <outlet property="promoMetaDataView" destination="kc1-mf-STB" id="RuF-zY-xTm"/>
+                <outlet property="promoMetaDataWidth" destination="KVW-S8-tLJ" id="7jk-ba-lUv"/>
                 <outlet property="titleLabel" destination="gYQ-uI-2TI" id="4Bf-Yp-GQ7"/>
             </connections>
             <point key="canvasLocation" x="453" y="117"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

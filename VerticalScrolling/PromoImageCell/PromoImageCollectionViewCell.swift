@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol PromoImageCollectionViewCellDelegate: AnyObject {
+    func cellFocussed()
+    func cellUnFocussed()
+}
+
 class PromoImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var metaDataView: UIView!
@@ -14,24 +19,20 @@ class PromoImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var providersLabel: UILabel!
     
+    weak var delegate: PromoImageCollectionViewCellDelegate?
+    
     func configureUI(index: Int) {
         numberLabel.text = "\(index)"
-        numberLabel.layer.borderColor = UIColor.orange.cgColor
-        numberLabel.layer.borderWidth = 0
         metaDataView.alpha = 0
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        if let cell = context.previouslyFocusedView as? PromoImageCollectionViewCell {
-            cell.numberLabel.layer.borderWidth = 0
-            cell.metaDataView.alpha = 0
+        if let _ = context.previouslyFocusedView as? PromoImageCollectionViewCell {
+            delegate?.cellUnFocussed()
         }
         
-        if let cell = context.nextFocusedView as? PromoImageCollectionViewCell {
-            UIView.animate(withDuration: 2) {
-                cell.numberLabel.layer.borderWidth = 5.0
-                cell.metaDataView.alpha = 1
-            }
+        if let _ = context.nextFocusedView as? PromoImageCollectionViewCell {
+            delegate?.cellFocussed()
         }
     }
 }

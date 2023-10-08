@@ -11,6 +11,7 @@ struct PromoCellProps {
     static var leftInset: CGFloat = 50
     static var cellPadding: CGFloat = 10
     static var featuredCellWidth: CGFloat = 990
+    static var cellWidth: CGFloat = 290
 }
 
 
