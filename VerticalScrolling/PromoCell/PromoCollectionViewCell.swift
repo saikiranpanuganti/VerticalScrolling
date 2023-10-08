@@ -13,13 +13,15 @@ class PromoCollectionViewCell: UICollectionViewCell {
     
     var focusedIndex: IndexPath? = IndexPath(item: 0, section: 0)
     var promoCellWidth:CGFloat = 300
+    var promoCollectionViewLayout: MpxCollectionViewLayout? {
+        return promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         promoCollectionView.contentInset = UIEdgeInsets(top: 0, left: PromoCellProps.leftInset, bottom: 0, right: 0)
         promoCollectionView.remembersLastFocusedIndexPath = false
         promoCollectionView.register(UINib(nibName: "PromoImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PromoImageCollectionViewCell")
-//        promoCollectionView.decelerationRate = .fast
         promoCollectionView.dataSource = self
         promoCollectionView.delegate = self
     }
@@ -32,7 +34,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
     }
     
     func configureUI(index: Int, homeData: HomeDataModel) {
-        if let collectionViewLayout = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
+        if let collectionViewLayout = promoCollectionViewLayout {
             promoCellWidth = self.frame.height - 80
             collectionViewLayout.cellWidth = promoCellWidth
         }
@@ -67,7 +69,6 @@ class PromoCollectionViewCell: UICollectionViewCell {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayoutMpx = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
-                print("$$Promo: shouldUpdateFocusIn >0 indexPath.item - \(indexPath.item) promoCellWidth - \(promoCellWidth) preferredPositionShouldX - \(((promoCellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset)")
                 collectionViewLayoutMpx.preferredPositionShouldX = ((promoCellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset
             }
             if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview && ((context.previouslyFocusedView as? MenuTableViewCell) == nil) {
@@ -87,7 +88,6 @@ class PromoCollectionViewCell: UICollectionViewCell {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayoutMpx = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
-                print("$$Promo: didUpdateFocusIn >0 indexPath.item - \(indexPath.item) promoCellWidth - \(promoCellWidth) preferredPositionDidX - \(((promoCellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset)")
                 collectionViewLayoutMpx.preferredPositionDidX = ((promoCellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset
             }
         }

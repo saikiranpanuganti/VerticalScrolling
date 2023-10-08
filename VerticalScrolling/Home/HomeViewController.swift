@@ -149,7 +149,17 @@ class HomeViewController: UIViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let previousIndexPath = context.previouslyFocusedIndexPath, let previousCell = collectionView.cellForItem(at: previousIndexPath) as? PromoCollectionViewCell {
+            if let mpxLayout = previousCell.promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
+                mpxLayout.isFocussed = false
+            }
+        }
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
+            if let nextCell = collectionView.cellForItem(at: indexPath) as? PromoCollectionViewCell {
+                if let mpxLayout = nextCell.promoCollectionViewLayout {
+                    mpxLayout.isFocussed = true
+                }
+            }
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayout = collectionView.collectionViewLayout as? HomeCollectionViewFlowLayout {
@@ -158,8 +168,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
 extension HomeViewController: UICollectionViewDataSource {

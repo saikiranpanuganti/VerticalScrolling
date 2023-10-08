@@ -18,18 +18,23 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     var preferredPositionShouldX: CGFloat? = nil
     var preferredPositionDidX: CGFloat? = nil
     
+    var isFocussed: Bool = false {
+        didSet {
+            if oldValue != isFocussed {
+                invalidateLayout()
+            }
+        }
+    }
     var cellWidth: CGFloat = 300.0
     var featuredCellWidth: CGFloat = PromoCellProps.featuredCellWidth
     var xOffsetPrevious: CGFloat = -(PromoCellProps.leftInset)
     var multiplier: CGFloat = 0
     
     func getCurrentIndexNext(xOffset: CGFloat) -> Int {
-        print("$$Promo: getCurrentIndex x - \((xOffset + PromoCellProps.leftInset)) cellWidth - \(cellWidth + PromoCellProps.cellPadding)")
         return Int((xOffset + PromoCellProps.leftInset)) / Int(cellWidth + PromoCellProps.cellPadding)
     }
     
     func getCurrentIndexPrevious(xOffset: CGFloat) -> Int {
-        print("$$Promo: getCurrentIndex x - \((xOffset + PromoCellProps.leftInset)) cellWidth - \(cellWidth + PromoCellProps.cellPadding)")
         return Int(ceil((xOffset + PromoCellProps.leftInset) / (cellWidth + PromoCellProps.cellPadding)))
     }
     
@@ -54,6 +59,23 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
         guard let collectionView = collectionView else { return }
         cache.removeAll()
         
+        if !isFocussed {
+            let columnHeight = contentHeight
+            var xOffset: CGFloat = 0
+            
+            for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                let indexPath = IndexPath(item: item, section: 0)
+                
+                let width = cellWidth
+                let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                attributes.frame = frame
+                cache.append(attributes)
+                contentWidth = max(contentWidth, frame.maxX)
+                xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+            }
+            return
+        }
         multiplier = (PromoCellProps.featuredCellWidth - cellWidth)/(cellWidth + PromoCellProps.cellPadding)
         let xOffSet_Coll = collectionView.contentOffset.x
         let columnHeight = contentHeight
@@ -116,10 +138,8 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                     
                     var width = cellWidth
                     if item == currentIndex {
-//                        print("$$Promo: leftScroll indexPath - \(indexPath) featuredCellWidth - \(featuredCellWidth) diff - \(diff) width - \(featuredCellWidth + diff*2)")
                         width = featuredCellWidth + (diff*multiplier)
                     }else if item == currentIndex - 1 {
-//                        print("$$Promo: leftScroll indexPath - \(indexPath) cellWidth - \(cellWidth) diff - \(diff) width - \(cellWidth - diff*2)")
                         width = cellWidth - (diff*multiplier)
                     }else {
                         width = cellWidth
