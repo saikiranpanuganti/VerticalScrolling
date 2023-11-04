@@ -58,13 +58,14 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
     override func prepare() {
         super.prepare()
         guard let collectionView = collectionView else { return }
+        var numberOfitems = collectionView.numberOfItems(inSection: 0)
         cache.removeAll()
         
         if !isFocussed {
             let columnHeight = contentHeight
             var xOffset: CGFloat = 0
             
-            for item in 0..<collectionView.numberOfItems(inSection: 0) {
+            for item in 0..<numberOfitems {
                 let indexPath = IndexPath(item: item, section: 0)
                 
                 let width = cellWidth
@@ -89,7 +90,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             xOffsetPrevious = xOffSet_Coll
             print("$$Layout: lpstart greaterThanEqual diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
-                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                for item in 0..<numberOfitems {
                     let indexPath = IndexPath(item: item, section: 0)
                     
                     let width = (item == currentIndex) ? featuredCellWidth : cellWidth
@@ -102,7 +103,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                     xOffset = (xOffset + width + (PromoCellProps.cellPadding))
                 }
             }else if diff > 0 {
-                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                for item in 0..<numberOfItems {
                     let indexPath = IndexPath(item: item, section: 0)
                     
                     var width = cellWidth
@@ -127,7 +128,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             xOffsetPrevious = xOffSet_Coll
             print("$$Layout: lpstart lessThan diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
-                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                for item in 0..<numberOfitems {
                     let indexPath = IndexPath(item: item, section: 0)
                     let width = (item == currentIndex) ? featuredCellWidth : cellWidth
                     print("$$Layout: else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
@@ -139,7 +140,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                     xOffset = (xOffset + width + (PromoCellProps.cellPadding))
                 }
             }else if diff < 0 {
-                for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                for item in 0..<numberOfitems {
                     let indexPath = IndexPath(item: item, section: 0)
                     
                     var width = cellWidth
