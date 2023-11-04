@@ -26,6 +26,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             }
         }
     }
+    var hasPreparedLayout: Bool = false
     var cellWidth: CGFloat = 300.0
     var featuredCellWidth: CGFloat = PromoCellProps.featuredCellWidth
     var xOffsetPrevious: CGFloat = -(PromoCellProps.leftInset)
@@ -62,6 +63,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
         cache.removeAll()
         
         if !isFocussed {
+            hasPreparedLayout = false
             let columnHeight = contentHeight
             var xOffset: CGFloat = 0
             
@@ -77,6 +79,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                 contentWidth = max(contentWidth, frame.maxX)
                 xOffset = (xOffset + width + (PromoCellProps.cellPadding))
             }
+            print("$$Layout:::::::::::::::::::::::::::::::::END")
             return
         }
         multiplier = (PromoCellProps.featuredCellWidth - cellWidth)/(cellWidth + PromoCellProps.cellPadding)
@@ -90,36 +93,88 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             xOffsetPrevious = xOffSet_Coll
             print("$$Layout: lpstart greaterThanEqual diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
-                for item in 0..<numberOfitems {
-                    let indexPath = IndexPath(item: item, section: 0)
+                if cacheBackUp.count == numberOfitems && currentIndex + 1 < numberOfitems && hasPreparedLayout {
+                    cache = cacheBackUp
+                    if currentIndex > 0 {
+                        xOffset = CGFloat(currentIndex - 1)*(cellWidth + PromoCellProps.cellPadding)
+                    }
                     
-                    let width = (item == currentIndex) ? featuredCellWidth : cellWidth
-                    print("$$Layout: if>=0 indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
-                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attributes.frame = frame
-                    cache.append(attributes)
-                    contentWidth = max(contentWidth, frame.maxX)
-                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    for i in -1...1 {
+                        let ind = currentIndex + i
+                        if ind >= 0 {
+                            let indexPath = IndexPath(item: ind, section: 0)
+                            let width = (ind == currentIndex) ? featuredCellWidth : cellWidth
+                            print("$$Layout: if>=0 prepared indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                            let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                            attributes.frame = frame
+                            cache[ind] = attributes   //.append(attributes)
+                            contentWidth = max(contentWidth, cache.last?.frame.maxX ?? 0)
+                            xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                        }
+                    }
+                }else {
+                    hasPreparedLayout = true
+                    for item in 0..<numberOfitems {
+                        let indexPath = IndexPath(item: item, section: 0)
+                        
+                        let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                        print("$$Layout: if>=0 indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                        let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                        attributes.frame = frame
+                        cache.append(attributes)
+                        contentWidth = max(contentWidth, frame.maxX)
+                        xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    }
                 }
             }else if diff > 0 {
-                for item in 0..<numberOfItems {
-                    let indexPath = IndexPath(item: item, section: 0)
-                    
-                    var width = cellWidth
-                    if item == currentIndex {
-                        width = featuredCellWidth - diff*multiplier
-                    }else if item == currentIndex + 1 {
-                        width = cellWidth + diff*multiplier
+                if cacheBackUp.count == numberOfitems && currentIndex + 1 < numberOfitems && hasPreparedLayout {
+                    cache = cacheBackUp
+                    if currentIndex > 0 {
+                        xOffset = CGFloat(currentIndex - 1)*(cellWidth + PromoCellProps.cellPadding)
                     }
-                    print("$$Layout: if>=0else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
-                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attributes.frame = frame
-                    cache.append(attributes)
-                    
-                    contentWidth = max(contentWidth, frame.maxX)
-                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    for i in -1...1 {
+                        let ind = currentIndex + i
+                        if ind >= 0 {
+                            let indexPath = IndexPath(item: ind, section: 0)
+                            
+                            var width = cellWidth
+                            if ind == currentIndex {
+                                width = featuredCellWidth - diff*multiplier
+                            }else if ind == currentIndex + 1 {
+                                width = cellWidth + diff*multiplier
+                            }
+                            print("$$Layout: if>=0else prepared indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                            let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                            attributes.frame = frame
+                            cache[ind] = attributes //.append(attributes)
+                            
+                            contentWidth = max(contentWidth, cache.last?.frame.maxX ?? 0)
+                            xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                        }
+                    }
+                }else {
+                    hasPreparedLayout = true
+                    for item in 0..<numberOfitems {
+                        let indexPath = IndexPath(item: item, section: 0)
+                        
+                        var width = cellWidth
+                        if item == currentIndex {
+                            width = featuredCellWidth - diff*multiplier
+                        }else if item == currentIndex + 1 {
+                            width = cellWidth + diff*multiplier
+                        }
+                        print("$$Layout: if>=0else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                        let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                        attributes.frame = frame
+                        cache.append(attributes)
+                        
+                        contentWidth = max(contentWidth, frame.maxX)
+                        xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    }
                 }
             }
         }else {
@@ -128,42 +183,94 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             xOffsetPrevious = xOffSet_Coll
             print("$$Layout: lpstart lessThan diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
-                for item in 0..<numberOfitems {
-                    let indexPath = IndexPath(item: item, section: 0)
-                    let width = (item == currentIndex) ? featuredCellWidth : cellWidth
-                    print("$$Layout: else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
-                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attributes.frame = frame
-                    cache.append(attributes)
-                    contentWidth = max(contentWidth, frame.maxX)
-                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                if cacheBackUp.count == numberOfitems && currentIndex + 1 < numberOfitems && hasPreparedLayout {
+                    cache = cacheBackUp
+                    if currentIndex > 0 {
+                        xOffset = CGFloat(currentIndex - 1)*(cellWidth + PromoCellProps.cellPadding)
+                    }
+                    for i in -1...1 {
+                        let ind = currentIndex + i
+                        if ind >= 0 {
+                            let indexPath = IndexPath(item: ind, section: 0)
+                            let width = (ind == currentIndex) ? featuredCellWidth : cellWidth
+                            print("$$Layout: else prepared indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                            let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                            attributes.frame = frame
+                            cache[ind] = attributes //.append(attributes)
+                            contentWidth = max(contentWidth, cache.last?.frame.maxX ?? 0)
+                            xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                        }
+                    }
+                }else {
+                    hasPreparedLayout = true
+                    for item in 0..<numberOfitems {
+                        let indexPath = IndexPath(item: item, section: 0)
+                        let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                        print("$$Layout: else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
+                        let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                        attributes.frame = frame
+                        cache.append(attributes)
+                        contentWidth = max(contentWidth, frame.maxX)
+                        xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    }
                 }
             }else if diff < 0 {
-                for item in 0..<numberOfitems {
-                    let indexPath = IndexPath(item: item, section: 0)
-                    
-                    var width = cellWidth
-                    if item == currentIndex {
-                        width = featuredCellWidth + (diff*multiplier)
-                    }else if item == currentIndex - 1 {
-                        width = cellWidth - (diff*multiplier)
-                    }else {
-                        width = cellWidth
+                if cacheBackUp.count == numberOfitems && currentIndex + 1 < numberOfitems && hasPreparedLayout {
+                    cache = cacheBackUp
+                    if currentIndex > 0 {
+                        xOffset = CGFloat(currentIndex - 1)*(cellWidth + PromoCellProps.cellPadding)
                     }
-                    print("$$Layout: elseelse indexPath - \(indexPath) currentIndex - \(currentIndex) \(currentIndex - 1) xOffset - \(xOffset) width - \(width)")
-                    let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
-                    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                    attributes.frame = frame
-                    cache.append(attributes)
-                    
-                    contentWidth = max(contentWidth, frame.maxX)
-                    xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    for i in -1...1 {
+                        let ind = currentIndex + i
+                        if ind >= 0 {
+                            let indexPath = IndexPath(item: ind, section: 0)
+                            
+                            var width = cellWidth
+                            if ind == currentIndex {
+                                width = featuredCellWidth + (diff*multiplier)
+                            }else if ind == currentIndex - 1 {
+                                width = cellWidth - (diff*multiplier)
+                            }else {
+                                width = cellWidth
+                            }
+                            print("$$Layout: elseelse prepared indexPath - \(indexPath) currentIndex - \(currentIndex) \(currentIndex - 1) xOffset - \(xOffset) width - \(width)")
+                            let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                            attributes.frame = frame
+                            cache[ind] = attributes //.append(attributes)
+                            contentWidth = max(contentWidth, frame.maxX)
+                            xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                        }
+                    }
+                }else {
+                    hasPreparedLayout = true
+                    for item in 0..<numberOfitems {
+                        let indexPath = IndexPath(item: item, section: 0)
+                        
+                        var width = cellWidth
+                        if item == currentIndex {
+                            width = featuredCellWidth + (diff*multiplier)
+                        }else if item == currentIndex - 1 {
+                            width = cellWidth - (diff*multiplier)
+                        }else {
+                            width = cellWidth
+                        }
+                        print("$$Layout: elseelse indexPath - \(indexPath) currentIndex - \(currentIndex) \(currentIndex - 1) xOffset - \(xOffset) width - \(width)")
+                        let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
+                        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                        attributes.frame = frame
+                        cache.append(attributes)
+                        contentWidth = max(contentWidth, frame.maxX)
+                        xOffset = (xOffset + width + (PromoCellProps.cellPadding))
+                    }
                 }
             }
         }
         
         cacheBackUp = cache
+        print("$$Layout:::::::::::::::::::::::::::::::::END")
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
