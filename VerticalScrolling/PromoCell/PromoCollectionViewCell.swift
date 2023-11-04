@@ -160,6 +160,7 @@ extension PromoCollectionViewCell: PromoImageCollectionViewCellDelegate {
     }
     
     func cellUnFocussed() {
+        cleanMetaDataTimer()
         borderView.alpha = 0
         promoMetaDataView.alpha = 0
     }

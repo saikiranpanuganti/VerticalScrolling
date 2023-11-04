@@ -68,6 +68,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                 let indexPath = IndexPath(item: item, section: 0)
                 
                 let width = cellWidth
+                print("$$Layout: not focussed indexPath - \(indexPath)")
                 let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.frame = frame
@@ -81,16 +82,18 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
         let xOffSet_Coll = collectionView.contentOffset.x
         let columnHeight = contentHeight
         var xOffset: CGFloat = 0
-        
+        print("$$Layout: lpstart multiplier - \(multiplier) xOffSet_Coll - \(xOffSet_Coll)")
         if xOffSet_Coll - xOffsetPrevious >= 0 {
             let currentIndex = getCurrentIndexNext(xOffset: xOffSet_Coll)
             let diff = xOffSet_Coll - (CGFloat(currentIndex)*(cellWidth + PromoCellProps.cellPadding)) + PromoCellProps.leftInset
             xOffsetPrevious = xOffSet_Coll
+            print("$$Layout: lpstart greaterThanEqual diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
                 for item in 0..<collectionView.numberOfItems(inSection: 0) {
                     let indexPath = IndexPath(item: item, section: 0)
                     
                     let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                    print("$$Layout: if>=0 indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
                     let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                     let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attributes.frame = frame
@@ -108,7 +111,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                     }else if item == currentIndex + 1 {
                         width = cellWidth + diff*multiplier
                     }
-                    
+                    print("$$Layout: if>=0else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
                     let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                     let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attributes.frame = frame
@@ -122,10 +125,12 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
             let currentIndex = getCurrentIndexPrevious(xOffset: xOffSet_Coll)
             let diff = xOffSet_Coll - (CGFloat(currentIndex)*(cellWidth + PromoCellProps.cellPadding)) + PromoCellProps.leftInset
             xOffsetPrevious = xOffSet_Coll
+            print("$$Layout: lpstart lessThan diff - \(diff) currentIndex - \(currentIndex)")
             if diff == 0 {
                 for item in 0..<collectionView.numberOfItems(inSection: 0) {
                     let indexPath = IndexPath(item: item, section: 0)
                     let width = (item == currentIndex) ? featuredCellWidth : cellWidth
+                    print("$$Layout: else indexPath - \(indexPath) currentIndex - \(currentIndex) xOffset - \(xOffset) width - \(width)")
                     let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                     let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attributes.frame = frame
@@ -145,6 +150,7 @@ class MpxCollectionViewLayout: UICollectionViewLayout {
                     }else {
                         width = cellWidth
                     }
+                    print("$$Layout: elseelse indexPath - \(indexPath) currentIndex - \(currentIndex) \(currentIndex - 1) xOffset - \(xOffset) width - \(width)")
                     let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                     let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     attributes.frame = frame
