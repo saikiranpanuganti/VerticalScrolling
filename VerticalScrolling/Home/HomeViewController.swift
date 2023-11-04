@@ -43,7 +43,8 @@ class HomeViewController: UIViewController {
         
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
-        homeData.append(HomeDataModel(carouselHeight: 470, isHidden: false))
+        homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
+        homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
