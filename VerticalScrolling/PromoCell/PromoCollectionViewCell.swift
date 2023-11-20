@@ -24,17 +24,21 @@ class PromoCollectionViewCell: UICollectionViewCell {
         return promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout
     }
     
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [promoCollectionView]
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        borderLeading.constant = PromoCellProps.leftInset
-        borderWidth.constant = PromoCellProps.cellWidth
-        promoMetaDataLeading.constant = PromoCellProps.leftInset + PromoCellProps.cellWidth
-        promoMetaDataWidth.constant = PromoCellProps.featuredCellWidth - PromoCellProps.cellWidth
+        borderLeading.constant = DescInlineConstants.leftInset
+        borderWidth.constant = DescInlineConstants.cellWidth
+        promoMetaDataLeading.constant = DescInlineConstants.leftInset + DescInlineConstants.cellWidth
+        promoMetaDataWidth.constant = DescInlineConstants.featuredCellWidth - DescInlineConstants.cellWidth
         promoMetaDataView.alpha = 0
         borderView.alpha = 0
-        promoCollectionView.contentInset = UIEdgeInsets(top: 0, left: PromoCellProps.leftInset, bottom: 0, right: 0)
-        promoCollectionView.remembersLastFocusedIndexPath = false
+        promoCollectionView.contentInset = UIEdgeInsets(top: 0, left: DescInlineConstants.leftInset, bottom: 0, right: 0)
+        promoCollectionView.remembersLastFocusedIndexPath = true
         promoCollectionView.register(UINib(nibName: "PromoImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PromoImageCollectionViewCell")
         promoCollectionView.dataSource = self
         promoCollectionView.delegate = self
@@ -50,12 +54,13 @@ class PromoCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        promoCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+        promoCollectionViewLayout?.forceupdateLayout = true
+//        promoCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
     }
     
     func configureUI(index: Int, homeData: HomeDataModel) {
         if let collectionViewLayout = promoCollectionViewLayout {
-            collectionViewLayout.cellWidth = PromoCellProps.cellWidth
+            collectionViewLayout.cellWidth = DescInlineConstants.cellWidth
         }
         titleLabel.text = "Mpx Carousel \(index)"
         promoCollectionView.reloadData()
@@ -80,7 +85,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
         metaDataTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] timer in
             self?.cleanMetaDataTimer()
             if let xOffset = self?.promoCollectionView.contentOffset.x {
-                let currentIndex = (xOffset + PromoCellProps.leftInset)/(PromoCellProps.cellWidth + PromoCellProps.cellPadding)
+                let currentIndex = (xOffset + DescInlineConstants.leftInset)/(DescInlineConstants.cellWidth + DescInlineConstants.cellPadding)
                 print("xOffset - \(xOffset) currentIndex - \(currentIndex)")
                 self?.metaDataLabel.text = "Index - \(Int(currentIndex))"
             }
@@ -101,20 +106,16 @@ class PromoCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayoutMpx = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
-                collectionViewLayoutMpx.preferredPositionShouldX = ((PromoCellProps.cellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset
-            }
-            if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview && ((context.previouslyFocusedView as? MenuTableViewCell) == nil) {
-                let fullyVisibleIndexPaths = getFullyVisibleCells(collectionView: collectionView)
-                if fullyVisibleIndexPaths.count > 0,
-                   context.nextFocusedIndexPath != fullyVisibleIndexPaths.first {
-                    moveFocus(toIndexPath: fullyVisibleIndexPaths.first ?? IndexPath(item: 0, section: 0))
-//                    return false
-                }
+                collectionViewLayoutMpx.preferredPositionShouldX = ((DescInlineConstants.cellWidth + DescInlineConstants.cellPadding)*CGFloat(indexPath.item)) - DescInlineConstants.leftInset
             }
         }
         return true
@@ -125,7 +126,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayoutMpx = promoCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
-                collectionViewLayoutMpx.preferredPositionDidX = ((PromoCellProps.cellWidth + PromoCellProps.cellPadding)*CGFloat(indexPath.item)) - PromoCellProps.leftInset
+                collectionViewLayoutMpx.preferredPositionDidX = ((DescInlineConstants.cellWidth + DescInlineConstants.cellPadding)*CGFloat(indexPath.item)) - DescInlineConstants.leftInset
             }
         }
     }
@@ -133,7 +134,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
 
 extension PromoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 500
+        return 5000
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -13,6 +13,10 @@ class HomeViewController: UIViewController {
     var homeLayout: HomeLayoutModel?
     
     var homeData: [HomeDataModel] = []
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [collectionView]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +40,6 @@ class HomeViewController: UIViewController {
     }
     
     func getData() {
-//        homeLayout = Bundle.main.decode("homelayout.json")
-//        for carousel in homeLayout?.data.content.carouselsV1 ?? [] {
-//            getCarousel(carousel: carousel)
-//        }
-        
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))

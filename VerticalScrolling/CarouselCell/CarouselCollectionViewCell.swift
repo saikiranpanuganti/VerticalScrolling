@@ -13,10 +13,14 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     
     var focusedIndex: IndexPath? = IndexPath(item: 0, section: 0)
     
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [carouselCollectionView]
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         carouselCollectionView.contentInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
-        carouselCollectionView.remembersLastFocusedIndexPath = false
+        carouselCollectionView.remembersLastFocusedIndexPath = true
         carouselCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
         carouselCollectionView.dataSource = self
         carouselCollectionView.delegate = self
@@ -26,7 +30,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        carouselCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+//        carouselCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
     }
     
     func configureUI(index: Int, homeData: HomeDataModel) {
@@ -59,6 +63,10 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
@@ -67,14 +75,6 @@ class CarouselCollectionViewCell: UICollectionViewCell {
                 collectionViewLayout.preferredPositionShouldX = cellLocation.x - 50
             }else if let collectionViewLayoutMpx = carouselCollectionView.collectionViewLayout as? MpxCollectionViewLayout {
                 collectionViewLayoutMpx.preferredPositionShouldX = cellLocation.x - 50
-            }
-            if context.previouslyFocusedView?.superview !== context.nextFocusedView?.superview && ((context.previouslyFocusedView as? MenuTableViewCell) == nil) {
-                let fullyVisibleIndexPaths = getFullyVisibleCells(collectionView: collectionView)
-                if fullyVisibleIndexPaths.count > 0,
-                   context.nextFocusedIndexPath != fullyVisibleIndexPaths.first {
-                    moveFocus(toIndexPath: fullyVisibleIndexPaths.first ?? IndexPath(item: 0, section: 0))
-//                    return false
-                }
             }
         }
         return true
