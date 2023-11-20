@@ -53,7 +53,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        promoMetaDataView.alpha = 0
         promoCollectionViewLayout?.forceupdateLayout = true
 //        promoCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
     }
@@ -86,7 +86,7 @@ class PromoCollectionViewCell: UICollectionViewCell {
             self?.cleanMetaDataTimer()
             if let xOffset = self?.promoCollectionView.contentOffset.x {
                 let currentIndex = (xOffset + DescInlineConstants.leftInset)/(DescInlineConstants.cellWidth + DescInlineConstants.cellPadding)
-                print("xOffset - \(xOffset) currentIndex - \(currentIndex)")
+//                print("xOffset - \(xOffset) currentIndex - \(currentIndex)")
                 self?.metaDataLabel.text = "Index - \(Int(currentIndex))"
             }
         })

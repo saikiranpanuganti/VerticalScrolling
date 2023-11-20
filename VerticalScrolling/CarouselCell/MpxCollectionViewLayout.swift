@@ -28,7 +28,7 @@ class MpxCollectionViewLayout: UICollectionViewFlowLayout {
     var forceupdateLayout: Bool = false {
         didSet {
             if forceupdateLayout {
-                print("$$Layout: emptying cache backup layout")
+//                print("$$Layout: emptying cache backup layout")
                 cacheBackUp = []
                 unfocussedCacheBackUp = []
             }
