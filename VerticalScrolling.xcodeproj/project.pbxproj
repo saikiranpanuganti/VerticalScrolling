@@ -42,6 +42,10 @@
 		7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E812AC68CDD00DED1AF /* AppConstants.swift */; };
 		7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */; };
 		7FA40E872AC6B00700DED1AF /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */; };
+		7FEC8DC02B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC8DBE2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift */; };
+		7FEC8DC12B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */; };
+		7FEC8DC52B0BE5DE004952DF /* ExpandingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC8DC32B0BE5DE004952DF /* ExpandingCollectionViewCell.swift */; };
+		7FEC8DC62B0BE5DE004952DF /* ExpandingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEC8DC42B0BE5DE004952DF /* ExpandingCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +85,10 @@
 		7FA40E812AC68CDD00DED1AF /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7FA40E842AC6B00700DED1AF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		7FA40E852AC6B00700DED1AF /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		7FEC8DBE2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		7FEC8DC32B0BE5DE004952DF /* ExpandingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCollectionViewCell.swift; sourceTree = "<group>"; };
+		7FEC8DC42B0BE5DE004952DF /* ExpandingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +175,8 @@
 				7F4409B62AC9AE5100DF5FCA /* SplashViewController.swift */,
 				7F4409BB2AC9BF0F00DF5FCA /* HomeLayout.swift */,
 				7F4409BF2ACA962500DF5FCA /* NetworkAdaptor.swift */,
+				7FEC8DC22B0BE5C5004952DF /* ExpandingCell */,
+				7FEC8DBD2B0BE158004952DF /* ExpandingCarousel */,
 				7F4409CA2AD0942600DF5FCA /* PromoImageCell */,
 				7F4409C52AD05ACE00DF5FCA /* PromoCell */,
 				7F4409A42AC725BD00DF5FCA /* CarouselCell */,
@@ -214,6 +224,24 @@
 				7FA40E832AC6AFE100DED1AF /* MenuCell */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		7FEC8DBD2B0BE158004952DF /* ExpandingCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				7FEC8DBE2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift */,
+				7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */,
+			);
+			path = ExpandingCarousel;
+			sourceTree = "<group>";
+		};
+		7FEC8DC22B0BE5C5004952DF /* ExpandingCell */ = {
+			isa = PBXGroup;
+			children = (
+				7FEC8DC32B0BE5DE004952DF /* ExpandingCollectionViewCell.swift */,
+				7FEC8DC42B0BE5DE004952DF /* ExpandingCollectionViewCell.xib */,
+			);
+			path = ExpandingCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +305,10 @@
 				7F55B3602ABE03B000CF1FE9 /* LaunchScreen.storyboard in Resources */,
 				7F55B35D2ABE03B000CF1FE9 /* Assets.xcassets in Resources */,
 				7F4409C92AD05AF400DF5FCA /* PromoCollectionViewCell.xib in Resources */,
+				7FEC8DC12B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib in Resources */,
 				7F4409BA2AC9BED400DF5FCA /* homelayout.json in Resources */,
 				7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */,
+				7FEC8DC62B0BE5DE004952DF /* ExpandingCollectionViewCell.xib in Resources */,
 				7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */,
 				7F4409CE2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib in Resources */,
 				7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */,
@@ -304,7 +334,9 @@
 				7F4409C22ACFB3CC00DF5FCA /* MpxCollectionViewLayout1.swift in Sources */,
 				7F4409C82AD05AF400DF5FCA /* PromoCollectionViewCell.swift in Sources */,
 				7FA40E762AC6791E00DED1AF /* ContainerViewController.swift in Sources */,
+				7FEC8DC52B0BE5DE004952DF /* ExpandingCollectionViewCell.swift in Sources */,
 				7F55B3682ABE040E00CF1FE9 /* ImageCollectionViewCell.swift in Sources */,
+				7FEC8DC02B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift in Sources */,
 				7F4409C02ACA962500DF5FCA /* NetworkAdaptor.swift in Sources */,
 				7FA40E7D2AC67BD700DED1AF /* MenuViewController.swift in Sources */,
 				7F55B3582ABE03AC00CF1FE9 /* ViewController.swift in Sources */,

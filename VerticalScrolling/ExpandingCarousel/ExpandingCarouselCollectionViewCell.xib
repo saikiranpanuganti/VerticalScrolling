@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="22155" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="ExpandingCarouselCollectionViewCell" customModule="VerticalScrolling" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="858" height="447"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="858" height="447"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-kR-5fN">
+                        <rect key="frame" x="20" y="10" width="818" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="a9f-dk-4jf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RKj-Gg-uMH">
+                        <rect key="frame" x="0.0" y="70" width="858" height="377"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z27-gz-hN6">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <constraints>
+                <constraint firstItem="RKj-Gg-uMH" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="Tcm-WL-AB0"/>
+                <constraint firstItem="RKj-Gg-uMH" firstAttribute="top" secondItem="Z9u-kR-5fN" secondAttribute="bottom" id="Ux6-jM-2se"/>
+                <constraint firstItem="Z9u-kR-5fN" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="10" id="beK-qb-Ios"/>
+                <constraint firstAttribute="trailing" secondItem="Z9u-kR-5fN" secondAttribute="trailing" constant="20" id="cvH-ik-i39"/>
+                <constraint firstAttribute="bottom" secondItem="RKj-Gg-uMH" secondAttribute="bottom" id="h7X-mI-VoP"/>
+                <constraint firstItem="Z9u-kR-5fN" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="20" id="wNN-Pt-LUA"/>
+                <constraint firstAttribute="trailing" secondItem="RKj-Gg-uMH" secondAttribute="trailing" id="z9C-xF-Wub"/>
+            </constraints>
+            <size key="customSize" width="858" height="447"/>
+            <connections>
+                <outlet property="collectionView" destination="RKj-Gg-uMH" id="jf5-bN-TOx"/>
+                <outlet property="titleLabel" destination="Z9u-kR-5fN" id="PgY-Rh-PkC"/>
+            </connections>
+            <point key="canvasLocation" x="372" y="162.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

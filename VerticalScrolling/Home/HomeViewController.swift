@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
         
         collectionView.register(UINib(nibName: "CarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CarouselCollectionViewCell")
         collectionView.register(UINib(nibName: "PromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PromoCollectionViewCell")
+        collectionView.register(UINib(nibName: "ExpandingCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ExpandingCarouselCollectionViewCell")
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -42,16 +43,16 @@ class HomeViewController: UIViewController {
     func getData() {
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
-        homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
-        homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
+        homeData.append(HomeDataModel(carouselHeight: 380, isHidden: false, carouselType: .expanding))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false))
+        homeData.append(HomeDataModel(carouselHeight: 380, isHidden: false, carouselType: .expanding))
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
         homeData.append(HomeDataModel(carouselHeight: 570, isHidden: false))
-        homeData.append(HomeDataModel(carouselHeight: 470, isHidden: false))
+        homeData.append(HomeDataModel(carouselHeight: 380, isHidden: false, carouselType: .expanding))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false))
-        homeData.append(HomeDataModel(carouselHeight: 570, isHidden: false))
+        homeData.append(HomeDataModel(carouselHeight: 380, isHidden: false, carouselType: .expanding))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false, carouselType: .mpx))
         homeData.append(HomeDataModel(carouselHeight: 370, isHidden: false))
         homeData.append(HomeDataModel(carouselHeight: 270, isHidden: false))
@@ -182,6 +183,12 @@ extension HomeViewController: UICollectionViewDataSource {
                 
                 return cell
             }
+        }else if homeData[indexPath.item].carouselType == .expanding {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpandingCarouselCollectionViewCell", for: indexPath) as? ExpandingCarouselCollectionViewCell {
+                cell.configureUI(index: indexPath.item, homeData: homeData[indexPath.item])
+        
+                return cell
+            }
         }else {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CarouselCollectionViewCell", for: indexPath) as? CarouselCollectionViewCell {
                 cell.configureUI(index: indexPath.item, homeData: homeData[indexPath.item])
@@ -216,4 +223,5 @@ struct HomeDataModel {
 enum CarouselType: String {
     case mpx
     case portrait
+    case expanding
 }
