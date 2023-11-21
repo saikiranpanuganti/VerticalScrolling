@@ -15,6 +15,10 @@ class ExpandingCarouselCollectionViewCell: UICollectionViewCell {
         return [collectionView]
     }
     
+    var expandingCollectionViewLayout: ExpandingCollectionViewFlowLayout? {
+        return collectionView.collectionViewLayout as? ExpandingCollectionViewFlowLayout
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,6 +32,31 @@ class ExpandingCarouselCollectionViewCell: UICollectionViewCell {
     func configureUI(index: Int, homeData: HomeDataModel) {
         titleLabel.text = "Expanding Carousel \(index)"
         collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
+        if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
+            let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
+            let cellLocation = cell.convert(cellCenter, to: collectionView)
+            if let collectionViewLayoutMpx = collectionView.collectionViewLayout as? ExpandingCollectionViewFlowLayout {
+                collectionViewLayoutMpx.preferredPositionShouldX = cellLocation.x - 50
+            }
+        }
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
+            let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
+            let cellLocation = cell.convert(cellCenter, to: collectionView)
+            if let collectionViewLayoutMpx = collectionView.collectionViewLayout as? ExpandingCollectionViewFlowLayout {
+                collectionViewLayoutMpx.preferredPositionDidX = cellLocation.x - 50
+            }
+        }
     }
 }
 
@@ -47,10 +76,4 @@ extension ExpandingCarouselCollectionViewCell: UICollectionViewDataSource {
 
 extension ExpandingCarouselCollectionViewCell: UICollectionViewDelegate {
     
-}
-
-extension ExpandingCarouselCollectionViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
-    }
 }

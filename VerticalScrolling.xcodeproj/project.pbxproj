@@ -46,6 +46,7 @@
 		7FEC8DC12B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */; };
 		7FEC8DC52B0BE5DE004952DF /* ExpandingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC8DC32B0BE5DE004952DF /* ExpandingCollectionViewCell.swift */; };
 		7FEC8DC62B0BE5DE004952DF /* ExpandingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEC8DC42B0BE5DE004952DF /* ExpandingCollectionViewCell.xib */; };
+		7FEC8DC82B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC8DC72B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		7FEC8DC32B0BE5DE004952DF /* ExpandingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7FEC8DC42B0BE5DE004952DF /* ExpandingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCollectionViewCell.xib; sourceTree = "<group>"; };
+		7FEC8DC72B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 			children = (
 				7FEC8DBE2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift */,
 				7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */,
+				7FEC8DC72B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift */,
 			);
 			path = ExpandingCarousel;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				7FA40E862AC6B00700DED1AF /* MenuTableViewCell.swift in Sources */,
 				7F4409C22ACFB3CC00DF5FCA /* MpxCollectionViewLayout1.swift in Sources */,
 				7F4409C82AD05AF400DF5FCA /* PromoCollectionViewCell.swift in Sources */,
+				7FEC8DC82B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift in Sources */,
 				7FA40E762AC6791E00DED1AF /* ContainerViewController.swift in Sources */,
 				7FEC8DC52B0BE5DE004952DF /* ExpandingCollectionViewCell.swift in Sources */,
 				7F55B3682ABE040E00CF1FE9 /* ImageCollectionViewCell.swift in Sources */,
