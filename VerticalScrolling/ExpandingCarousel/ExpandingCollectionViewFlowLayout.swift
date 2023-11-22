@@ -11,7 +11,10 @@ class ExpandingCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var preferredPositionShouldX: CGFloat? = nil
     var preferredPositionDidX: CGFloat? = nil
     var cellWidth: CGFloat = 200
+    var focussedCellWidth: CGFloat = 200
+    var focussedIndex: Int?
     private var cache: [UICollectionViewLayoutAttributes] = []
+    private var unFocussedCache: [UICollectionViewLayoutAttributes] = []
     private var contentWidth: CGFloat = 0
     private var contentHeight: CGFloat = 300
     
@@ -35,17 +38,24 @@ class ExpandingCollectionViewFlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
-        var numberOfitems = collectionView.numberOfItems(inSection: 0)
-        cache.removeAll()
-        let columnHeight = contentHeight
+        let numberOfitems = collectionView.numberOfItems(inSection: 0)
         
         if !isFocussed {
+            if numberOfitems == unFocussedCache.count {
+                cache = unFocussedCache
+                return
+            }
+            unFocussedCache.removeAll()
+            cache.removeAll()
+            let columnHeight = contentHeight
+            
             var xOffset: CGFloat = 0
             
             for item in 0..<numberOfitems {
                 let indexPath = IndexPath(item: item, section: 0)
                 
                 let width = cellWidth
+                print("$$Expanding: unfocussed indexPath - \(indexPath), x - \(xOffset), width - \(width)")
                 let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.frame = frame
@@ -53,13 +63,21 @@ class ExpandingCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 contentWidth = max(contentWidth, frame.maxX)
                 xOffset = (xOffset + width + (DescInlineConstants.cellPadding))
             }
+            unFocussedCache = cache
         }else {
+            cache.removeAll()
+            let columnHeight = contentHeight
+            
             var xOffset: CGFloat = 0
             
             for item in 0..<numberOfitems {
                 let indexPath = IndexPath(item: item, section: 0)
                 
-                let width = cellWidth
+                var width = cellWidth
+                if let focussedIndex = focussedIndex, focussedIndex == indexPath.item {
+                    width = focussedCellWidth
+                }
+                print("$$Expanding: focussed indexPath - \(indexPath), focussedIndex - \(focussedIndex) x - \(xOffset), width - \(width)")
                 let frame = CGRect(x: xOffset, y: 0, width: width, height: columnHeight)
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.frame = frame
@@ -113,6 +131,6 @@ class ExpandingCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
+        return false
     }
 }

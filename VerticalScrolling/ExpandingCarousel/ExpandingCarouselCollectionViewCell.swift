@@ -11,6 +11,9 @@ class ExpandingCarouselCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var expandingTimer: Timer?
+    var lastFocussedIndexPath: IndexPath? = nil
+    
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [collectionView]
     }
@@ -34,6 +37,25 @@ class ExpandingCarouselCollectionViewCell: UICollectionViewCell {
         collectionView.reloadData()
     }
     
+    func animateCell(indexPath: IndexPath) {
+        expandingTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { [weak self] timer in
+            self?.invalidateTimer()
+            
+            if let layout = self?.expandingCollectionViewLayout {
+                layout.focussedIndex = indexPath.item
+                layout.focussedCellWidth = 600
+                layout.invalidateLayout()
+            }
+        })
+    }
+    
+    func invalidateTimer() {
+        if expandingTimer != nil {
+            expandingTimer?.invalidate()
+            expandingTimer = nil
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -50,12 +72,18 @@ class ExpandingCarouselCollectionViewCell: UICollectionViewCell {
     }
     
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let indexPath = context.previouslyFocusedIndexPath {
+            invalidateTimer()
+            lastFocussedIndexPath = nil
+        }
         if let indexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: indexPath) {
+            lastFocussedIndexPath = indexPath
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
             if let collectionViewLayoutMpx = collectionView.collectionViewLayout as? ExpandingCollectionViewFlowLayout {
                 collectionViewLayoutMpx.preferredPositionDidX = cellLocation.x - 50
             }
+            animateCell(indexPath: indexPath)
         }
     }
 }
@@ -67,13 +95,23 @@ extension ExpandingCarouselCollectionViewCell: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpandingCollectionViewCell", for: indexPath) as? ExpandingCollectionViewCell {
+            cell.delegate = self
             cell.configureUI(index: indexPath.item)
             return cell
         }
         return UICollectionViewCell()
     }
 }
-
 extension ExpandingCarouselCollectionViewCell: UICollectionViewDelegate {
     
+}
+
+
+extension ExpandingCarouselCollectionViewCell: ExpandingCollectionViewCellDelegate {
+    func expandingCellFocussed() {
+        
+    }
+    func expandingCellUnFocussed() {
+        
+    }
 }

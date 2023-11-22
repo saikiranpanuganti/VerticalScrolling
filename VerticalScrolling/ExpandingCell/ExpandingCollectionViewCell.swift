@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol ExpandingCollectionViewCellDelegate: AnyObject {
+    func expandingCellFocussed()
+    func expandingCellUnFocussed()
+}
+
 class ExpandingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
+    
+    weak var delegate: ExpandingCollectionViewCellDelegate?
     
     func configureUI(index: Int) {
         if index%2 == 0 {
@@ -25,10 +32,12 @@ class ExpandingCollectionViewCell: UICollectionViewCell {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         if context.previouslyFocusedView == self {
             imageOutlet.layer.borderWidth = 0
+            delegate?.expandingCellUnFocussed()
         }
         
         if context.nextFocusedView == self {
             imageOutlet.layer.borderWidth = 5
+            delegate?.expandingCellFocussed()
         }
     }
 }

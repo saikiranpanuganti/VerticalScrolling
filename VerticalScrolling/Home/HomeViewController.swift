@@ -160,6 +160,10 @@ class HomeViewController: UIViewController {
                 if let mpxLayout = nextCell.promoCollectionViewLayout {
                     mpxLayout.isFocussed = true
                 }
+            }else if let nextCell = collectionView.cellForItem(at: indexPath) as? ExpandingCarouselCollectionViewCell {
+                if let expandingLayout = nextCell.expandingCollectionViewLayout {
+                    expandingLayout.isFocussed = true
+                }
             }
             let cellCenter = CGPoint(x: cell.bounds.origin.x, y: cell.bounds.origin.y)
             let cellLocation = cell.convert(cellCenter, to: collectionView)
