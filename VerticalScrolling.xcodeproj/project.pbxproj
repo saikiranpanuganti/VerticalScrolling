@@ -30,7 +30,8 @@
 		7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */; };
 		7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */; };
 		7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */; };
-		7F61AA702B0DAD4B00BE3D48 /* ExpandingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61AA6F2B0DAD4B00BE3D48 /* ExpandingCollectionViewLayout.swift */; };
+		7F61AA732B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61AA712B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.swift */; };
+		7F61AA742B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F61AA722B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.xib */; };
 		7F682E012ABF17010040FA94 /* ViewControllerGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */; };
 		7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */; };
 		7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */; };
@@ -75,7 +76,8 @@
 		7F55B3672ABE040E00CF1FE9 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		7F55B36A2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		7F55B36F2ABE2D0700CF1FE9 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
-		7F61AA6F2B0DAD4B00BE3D48 /* ExpandingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCollectionViewLayout.swift; sourceTree = "<group>"; };
+		7F61AA712B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCarouselCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F61AA722B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCarouselCellCollectionViewCell.xib; sourceTree = "<group>"; };
 		7F682E002ABF17010040FA94 /* ViewControllerGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGesture.swift; sourceTree = "<group>"; };
 		7F682E022AC02B080040FA94 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		7F682E032AC02B080040FA94 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -236,7 +238,8 @@
 				7FEC8DBE2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.swift */,
 				7FEC8DBF2B0BE2CB004952DF /* ExpandingCarouselCollectionViewCell.xib */,
 				7FEC8DC72B0BEDEE004952DF /* ExpandingCollectionViewFlowLayout.swift */,
-				7F61AA6F2B0DAD4B00BE3D48 /* ExpandingCollectionViewLayout.swift */,
+				7F61AA712B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.swift */,
+				7F61AA722B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.xib */,
 			);
 			path = ExpandingCarousel;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				7F4409BA2AC9BED400DF5FCA /* homelayout.json in Resources */,
 				7F682E052AC02B080040FA94 /* CarouselCollectionViewCell.xib in Resources */,
 				7FEC8DC62B0BE5DE004952DF /* ExpandingCollectionViewCell.xib in Resources */,
+				7F61AA742B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.xib in Resources */,
 				7F55B3692ABE040E00CF1FE9 /* ImageCollectionViewCell.xib in Resources */,
 				7F4409CE2AD0943800DF5FCA /* PromoImageCollectionViewCell.xib in Resources */,
 				7F55B35B2ABE03AC00CF1FE9 /* Main.storyboard in Resources */,
@@ -332,7 +336,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F4409A62AC7269800DF5FCA /* CarouselCollectionViewFlowLayout.swift in Sources */,
-				7F61AA702B0DAD4B00BE3D48 /* ExpandingCollectionViewLayout.swift in Sources */,
 				7F682E042AC02B080040FA94 /* CarouselCollectionViewCell.swift in Sources */,
 				7F4409AF2AC7D77600DF5FCA /* TestViewController.swift in Sources */,
 				7F4409B72AC9AE5100DF5FCA /* SplashViewController.swift in Sources */,
@@ -351,6 +354,7 @@
 				7FA40E792AC67B9700DED1AF /* HomeViewController.swift in Sources */,
 				7F55B3562ABE03AB00CF1FE9 /* AppDelegate.swift in Sources */,
 				7FA40E802AC67C0200DED1AF /* Utility.swift in Sources */,
+				7F61AA732B0E74FC00BE3D48 /* ExpandingCarouselCellCollectionViewCell.swift in Sources */,
 				7F55B36B2ABE0EAF00CF1FE9 /* CustomCollectionViewFlowLayout.swift in Sources */,
 				7FA40E822AC68CDD00DED1AF /* AppConstants.swift in Sources */,
 				7F55B3702ABE2D0700CF1FE9 /* AppData.swift in Sources */,
