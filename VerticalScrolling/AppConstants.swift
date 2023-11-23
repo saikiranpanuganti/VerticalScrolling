@@ -11,7 +11,8 @@ struct AppConstants {
     static let sideMenuMinWidth: CGFloat = 140
     static let sideMenuMaxWidth: CGFloat = 450
     
-    static let expandingCellWidth: CGFloat = 300
-    static let expandingCellFocussedWidth: CGFloat = 750
-    static let expandingCellHeight: CGFloat = 450
+    static let expandingCellWidth: CGFloat = 320
+    static let expandingCellFocussedWidth: CGFloat = 860
+    static let expandingCellHeight: CGFloat = 480
+    static let expandingCellFocussedHeight: CGFloat = 255
 }

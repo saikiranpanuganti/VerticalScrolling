@@ -60,6 +60,10 @@ class ExpandingCarouselCellCollectionViewCell: UICollectionViewCell {
     func animateCellWidth() {
         invalidateExpandingTimer()
         
+        if let lastFocussedIndexPath = lastFocussedIndexPath, let cell = collectionView.cellForItem(at: lastFocussedIndexPath) as? ExpandingCollectionViewCell {
+            cell.animateImageView()
+        }
+        
         expandingTimer = Timer.scheduledTimer(withTimeInterval: 0.007, repeats: true, block: { [weak self] timer in
             guard let width = self?.focussedCellWidth else {
                 self?.invalidateExpandingTimer()
